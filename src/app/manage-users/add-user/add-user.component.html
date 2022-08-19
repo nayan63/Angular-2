@@ -1,0 +1,41 @@
+<div class="col-md-6">
+  <form [formGroup]="userForm" (ngSubmit)="addUser()">
+    <input type="hidden" formControlName="id" value="1">
+    <div class="mb-3">
+      <label for="" class="form-label">Name</label>
+      <input type="email" formControlName="name" class="form-control">
+      <div class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">age</label>
+      <input type="number" formControlName="age" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Gender</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" formControlName="gender" value="Male">
+        <label class="form-check-label" for="">
+          Male
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" formControlName="gender" value="Female">
+        <label class="form-check-label" for="">
+          Female
+        </label>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Hobbie</label>
+      <div *ngFor="let hobbie of hobbies; let i=index;" class="form-check">
+        <input type="checkbox" [value]="hobbie.desc" [checked]="" (change)="onHobbieCheck($event)" class="form-check-input hobbies" >
+        <label class="form-check-label" for="">{{hobbie.desc}}</label>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Address</label>
+      <textarea formControlName="address" class="form-control" cols="10" rows="3"></textarea>
+    </div>
+    <button type="submit" [disabled]="userForm.invalid" class="btn btn-primary">Submit</button>
+  </form>
+</div>
